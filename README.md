@@ -47,10 +47,11 @@ Work in progress...
 ```
 
 *Conclusions*
-    * Move all units from every plant to warehouse 1.
-    * Then move all units from Warehouse 1 to every salepoint.
-    * Since the costs of moving a unit from every plant to any warehouse are equal (i.e. cost(P1, W1) = cost(P1, W2), the algorithm ignores the second warehouse (W2) and gives us a solution where all units are moved to the first warehouse (W1).
-    * Considering that there's no limitation in warehouse's capacity, this solution is feasible
+
+* Move all units from every plant to warehouse 1.
+* Then move all units from Warehouse 1 to every salepoint.
+* Since the costs of moving a unit from every plant to any warehouse are equal (i.e. cost(P1, W1) = cost(P1, W2), the algorithm ignores the second warehouse (W2) and gives us a solution where all units are moved to the first warehouse (W1).
+* Considering that there's no limitation in warehouse's capacity, this solution is feasible
       
 #### Solution for product A2 (or B) distribution
 
@@ -74,8 +75,8 @@ Work in progress...
 ```
 
 *Conclusions*
-    * Move all units from every plant to warehouse 1.
-    * Then move all units from Warehouse 1 to every salepoint.
-    * Since the costs of moving a unit from every plant to any warehouse are equal (i.e. cost(P1, W1) = cost(P1, W2), the algorithm ignores the second warehouse (W2) and gives us a solution where all units are moved to the first warehouse (W1).
-    * Considering that there's no limitation in warehouse's capacity, this solution is feasible
 
+* Move all units from every plant to warehouse 1.
+* Then move all units from Warehouse 1 to every salepoint.
+* Since the costs of moving a unit from every plant to any warehouse are equal (i.e. cost(P1, W1) = cost(P1, W2), the algorithm ignores the second warehouse (W2) and gives us a solution where all units are moved to the first warehouse (W1).
+* Considering that there's no limitation in warehouse's capacity, this solution is feasible
