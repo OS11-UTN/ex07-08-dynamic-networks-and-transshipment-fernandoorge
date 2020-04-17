@@ -53,7 +53,7 @@ Work in progress...
 * Since the costs of moving a unit from every plant to any warehouse are equal (i.e. cost(P1, W1) = cost(P1, W2), the algorithm ignores the second warehouse (W2) and gives us a solution where all units are moved to the first warehouse (W1).
 * Considering that there's no limitation in warehouse's capacity, this solution is feasible
       
-#### Solution for product A2 (or B) distribution
+#### Solution for product A2
 
 ```
     SOLVING PROBLEM WITH SIMPLEX
@@ -80,3 +80,11 @@ Work in progress...
 * Then move all units from Warehouse 1 to every salepoint.
 * Since the costs of moving a unit from every plant to any warehouse are equal (i.e. cost(P1, W1) = cost(P1, W2), the algorithm ignores the second warehouse (W2) and gives us a solution where all units are moved to the first warehouse (W1).
 * Considering that there's no limitation in warehouse's capacity, this solution is feasible
+
+
+#### Solution for both products
+
+**The solution for both products can be thought as the linear combination of solution A and solution B, due to the following reasons**:
+
+* The graph of product A1 (or simply A) is completely independant of the graph of product A2 (or B).
+* There is no stock limit in the warehouses. The products doest not compite with each other.
