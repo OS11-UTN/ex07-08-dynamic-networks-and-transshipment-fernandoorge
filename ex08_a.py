@@ -32,16 +32,7 @@ import logistics as lg
 from   scipy.optimize import  linprog
 
 nodes = ['P1','P2','P3','W1','W2','S1','S2','S3']
-NN_PW = np.array([[0, 0, 0, 1, 1, 0, 0, 0],
-                  [0, 0, 0, 1, 1, 0, 0, 0],
-                  [0, 0, 0, 1, 1, 0, 0, 0],
-                  [0, 0, 0, 0, 0, 1, 1, 1],
-                  [0, 0, 0, 0, 0, 1, 1, 1],
-                  [0, 0, 0, 0, 0, 0, 0, 0],
-                  [0, 0, 0, 0, 0, 0, 0, 0],
-                  [0, 0, 0, 0, 0, 0, 0, 0]])
-               
-NN_WS = np.array([[0, 0, 0, 1, 1, 0, 0, 0],
+NN    = np.array([[0, 0, 0, 1, 1, 0, 0, 0],
                   [0, 0, 0, 1, 1, 0, 0, 0],
                   [0, 0, 0, 1, 1, 0, 0, 0],
                   [0, 0, 0, 0, 0, 1, 1, 1],
@@ -50,8 +41,8 @@ NN_WS = np.array([[0, 0, 0, 1, 1, 0, 0, 0],
                   [0, 0, 0, 0, 0, 0, 0, 0],
                   [0, 0, 0, 0, 0, 0, 0, 0]])
 
-A_ub, arcs_ub = lg.nn2na(NN_PW, nodes)      # node-arc matrix and list of arcs
-A_eq, arcs_eq = lg.nn2na(NN_WS, nodes)      # node-arc matrix and list of arcs
+A_ub, arcs_ub = lg.nn2na(NN, nodes)      # node-arc matrix and list of arcs
+A_eq, arcs_eq = lg.nn2na(NN, nodes)      # node-arc matrix and list of arcs
 for i in range(0, len(nodes)):
     for j in range(0, len(arcs_ub)):
         if i <= 2:
