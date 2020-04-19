@@ -41,8 +41,8 @@ NN    = np.array([[0, 0, 0, 1, 1, 0, 0, 0],
                   [0, 0, 0, 0, 0, 0, 0, 0],
                   [0, 0, 0, 0, 0, 0, 0, 0]])
 
-A_ub, arcs_ub = lg.nn2na(NN, nodes)      # node-arc matrix and list of arcs
-A_eq, arcs_eq = lg.nn2na(NN, nodes)      # node-arc matrix and list of arcs
+A_ub, arcs_ub = lg.nn2na(NN)      # node-arc matrix and list of arcs
+A_eq, arcs_eq = lg.nn2na(NN)      # node-arc matrix and list of arcs
 for i in range(0, len(nodes)):
     for j in range(0, len(arcs_ub)):
         if i <= 2:
