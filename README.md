@@ -22,7 +22,25 @@ algorithms to complete the assignment can be found there.
 
 ### Solution to exercise 07
 
-Work in progress...
+```
+    1) For the following graph: find the maximum flow from s to t using the scipy.linprog package.
+    
+     SOLVING PROBLEM WITH: simplex
+	 Solution to the problem:
+	   The raw solution will be: 
+	   [ 6.  6.  3.  3.  0. -0.  5.  1.  5.  1.  3.  0.  3. -0.  0.  0.  2.  3.
+         2.  3.  0.  3.  3.  0.  0.  0.  3.  3.  0.  0.  3.  3.  6.  6. 18.]
+	   The maximum flow will be: 18.00 
+```
+	
+	   
+```
+    2) Optional: select and implement an algorithm designed for this particular kind of problems and
+    compare the results obtained in 1).
+```
+
+Work in progress... 
+**Note:** I will try to do this, becuase I don't really like the solution from point one. 
 
 ### Solution to exercise 08
 
