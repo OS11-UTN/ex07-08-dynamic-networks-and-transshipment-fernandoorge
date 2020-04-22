@@ -15,6 +15,8 @@
 import numpy     as np
 import logistics as lg
 from   scipy.optimize import  linprog
+import matplotlib
+import matplotlib.pyplot as plt
 
 #              s0 s1 s2 s3 s4 s5 s6 a1 a2 a3 a4 a5 a6 b1 b2 b3 b4 b5 b6 t1 t2 t3 t4 t5 t6 t0
 G = np.array([[ 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], #s0
@@ -129,3 +131,101 @@ print('\t   The raw solution will be: %s' % res.x)
 #            % (res.x[k], str(lg.convert_arc(arcs[k], nodes))))
 print('\t   The maximum flow will be: %0.2f ' % abs(res.fun))
 print('*****************************************************************\n')
+
+##############################################################################
+##############################################################################
+##############################################################################
+## ALTERNATIVE SOLUTION
+
+n  = 22
+a  = 0
+b  = 0
+t  = 0
+s  = 100
+nodes = np.zeros((n, 4))
+for k in range(n):
+    if b > 0:
+        if b >= 3:
+            t = t+3
+            b = b-3
+        else:
+            t = t+b
+            b = 0
+    if a > 0:
+        if a >= 3:
+            t = t+3
+            a = a-3
+        else:
+            t = t+a
+            a = 0
+    if (np.mod(k,3) == 0) and (k != 0):
+        if s > 0:
+            if s >= 10:
+                b = b + 10
+                s = s - 10
+            else:
+                b = b + s
+                s = 0
+    if (k != 0):
+        if s > 0:    
+            if s >= 5:
+                a = a + 5
+                s = s - 5
+            else:
+                a = a + s
+                s = 0
+    nodes[k][0] = s
+    nodes[k][1] = a
+    nodes[k][2] = b
+    nodes[k][3] = t
+
+for k in range(n):
+    print('state at time %2d: (s,a,b,t) = (%3d,%3d,%3d,%3d)' 
+        % (k, nodes[k][0],nodes[k][1],nodes[k][2],nodes[k][3]))
+
+
+xaxis = [x for x in range(n)]
+plt.figure()
+plt.plot(xaxis, nodes[:,[0]], 'r')
+plt.plot(xaxis, nodes[:,[1]], 'g')
+plt.plot(xaxis, nodes[:,[2]], 'b')
+plt.plot(xaxis, nodes[:,[3]], 'k')
+plt.legend(('# of people at source node',
+            '# of people at node a',
+            '# of people at node b',
+            '# of people at destination node'))
+plt.title('Evacuation Plan')
+plt.xlabel('Time   [AU]')
+plt.ylabel('People [AU]')
+plt.xlim(0,n)
+plt.ylim(0,100)
+plt.grid()
+plt.savefig("ex07_evacuation.png")
+
+s  = nodes[:,[0]]
+a  = nodes[:,[1]]
+b  = nodes[:,[2]]
+t  = nodes[:,[3]]
+ds = np.diff(s,axis=0)
+da = np.diff(a,axis=0)
+db = np.diff(b,axis=0)
+dt = np.diff(t,axis=0)
+
+plt.figure()
+plt.plot(xaxis[0:n-1], ds, 'r')
+plt.plot(xaxis[0:n-1], da, 'g')
+plt.plot(xaxis[0:n-1], db, 'b')
+plt.plot(xaxis[0:n-1], dt, 'k')
+plt.legend(('update rate of people at source node',
+            'update rate of people at node a',
+            'update rate of people at node b',
+            'update rate of people at destination node'))
+plt.title('Evacuation Plan - Update rate (discrete diff)')
+plt.xlabel('Time   [AU]')
+plt.ylabel('People [AU]')
+plt.xlim(0,n-2)
+plt.ylim(-20,20)
+plt.xticks([x for x in range(0,n-2)])
+plt.yticks([y for y in range(-18,20,3)])
+plt.grid()
+plt.savefig("ex07_diff.png")
